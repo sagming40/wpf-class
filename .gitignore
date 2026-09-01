@@ -1,0 +1,19 @@
+# Visual Studio 캐시/사용자 설정
+.vs/
+*.user
+*.suo
+
+# 빌드 결과물
+[Bb]in/
+[Oo]bj/
+
+# NuGet 패키지 (프로젝트마다 다시 받으면 됨)
+packages/
+*.nupkg
+
+# Rider/VSCode 등 다른 에디터 쓸 경우 대비
+.idea/
+.vscode/
+
+# Windows 임시 파일
+Thumbs.db

@@ -1,0 +1,54 @@
+﻿<Window x:Class="WpfPushNotification.MainWindow"
+        xmlns="http://microsoft.com"
+        xmlns:x="http://microsoft.com"
+        Title="CustomNotification" 
+        Height="100" Width="350"
+        WindowStyle="None"                  
+        AllowsTransparency="True"           
+        Background="Transparent"            
+        Topmost="True"                      
+        ShowInTaskbar="False"               
+        ResizeMode="NoResize"
+        Loaded="Window_Loaded">
+
+    <!-- 창 내부 리소스에 애니메이션 정의: 페이드인(스르륵 나타나기) -->
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Window.Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                     From="0.0" To="0.95" Duration="0:0:0.5"/>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
+
+    <!-- 우리 팀만의 커스텀 다크모드 알림창 디자인 -->
+    <Border Background="#EE1E1E1E" 
+            BorderBrush="#33FFFFFF" 
+            BorderThickness="1" 
+            CornerRadius="12" 
+            Padding="15">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- 1. 알림 아이콘 아이콘 (여기서는 원형 도형으로 대체) -->
+            <Ellipse Grid.Column="0" Width="16" Height="16" Fill="#FF4A90E2" VerticalAlignment="Top" Margin="0,2,10,0"/>
+
+            <!-- 2. 알림 메시지 텍스트 -->
+            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                <TextBlock Text="새로운 프로젝트 알림" FontWeight="Bold" Foreground="White" FontSize="13" Margin="0,0,0,4"/>
+                <TextBlock Text="WPF + ASP.NET Core 실시간 알림 테스트 중입니다." Foreground="#FFCCCCCC" FontSize="11" TextTrimming="CharacterEllipsis"/>
+            </StackPanel>
+
+            <!-- 3. 닫기 버튼 -->
+            <Button Grid.Column="2" Content="✕" Foreground="#A0FFFFFF" Background="Transparent" BorderThickness="0" 
+                    VerticalAlignment="Top" Cursor="Hand" Click="CloseButton_Click" FontSize="12"/>
+        </Grid>
+    </Border>
+</Window>
+
